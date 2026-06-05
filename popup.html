@@ -117,7 +117,7 @@
       border-radius: 18px;
       background: #fff;
       padding: 0 18px;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       font-size: 15px;
       color: #18181b;
       box-shadow:
@@ -126,6 +126,58 @@
 
     .search::placeholder {
       color: #a1a1aa;
+    }
+
+    /* ===== 标签分组 ===== */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex-shrink: 0;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, .7);
+      color: #71717a;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      background: rgba(249, 115, 22, .1);
+      color: #ea580c;
+    }
+
+    .tab-btn.active {
+      background: rgba(249, 115, 22, .15);
+      color: #ea580c;
+      font-weight: 600;
+      box-shadow: 0 1px 4px rgba(249, 115, 22, .15);
+    }
+
+    .tab-btn .tab-count {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 10px;
+      opacity: .65;
     }
 
     .grid {
@@ -224,6 +276,41 @@
       text-overflow: ellipsis;
     }
 
+    /* ===== 默认图标（favicon 加载失败时） ===== */
+    .default-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .default-icon::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -30%;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .1);
+      pointer-events: none;
+    }
+
+    .default-icon .di-letter {
+      position: relative;
+      z-index: 1;
+    }
+
     .empty {
 
       text-align: center;
@@ -290,6 +377,8 @@
   </div>
 
   <input id="search" class="search" placeholder="搜索收藏网站...">
+
+  <div id="tabs" class="tabs"></div>
 
   <div id="grid" class="grid"></div>
 
